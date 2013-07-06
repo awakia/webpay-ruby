@@ -1,5 +1,5 @@
 require "webpay/version"
 
-module Webpay
+module WebPay
   # Your code goes here...
 end

@@ -5,7 +5,7 @@ require 'webpay/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "webpay"
-  spec.version       = Webpay::VERSION
+  spec.version       = WebPay::VERSION
   spec.authors       = ["tomykaira"]
   spec.email         = ["tomykaira@gmail.com"]
   spec.description   = %q{TODO: Write a gem description}
