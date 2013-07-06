@@ -3,16 +3,40 @@ require 'webpay/version'
 module WebPay
   autoload(:Client, 'webpay/client')
   autoload(:WebPayError, 'webpay/errors/webpay_error')
+  autoload(:Entity, 'webpay/entity')
+  autoload(:Card, 'webpay/card')
+  autoload(:Charge, 'webpay/charge')
+  autoload(:ResponseConverter, 'webpay/response_converter')
 
   @api_base = 'https://api.webpay.jp'
   @api_version = '/v1'
   @api_key = nil
 
   class << self
-    attr_accessor :api_base, :api_key
-  end
+    def ssl_ca_file
+      File.join(File.dirname(File.expand_path(__FILE__)), 'data', 'ca-certificates.crt')
+    end
 
-  def self.ssl_ca_file
-    File.join(File.dirname(File.expand_path(__FILE__)), 'data', 'ca-certificates.crt')
+    def client
+      @client ||= Client.new(@api_key, @api_base, @api_version)
+    end
+
+    def api_base=(new_value)
+      @api_base = new_value
+      @client = nil
+    end
+
+    def api_key=(new_value)
+      @api_key = new_value
+      @client = nil
+    end
+
+    def api_base
+      @api_base
+    end
+
+    def api_key
+      @api_base
+    end
   end
 end
