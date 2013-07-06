@@ -2,6 +2,7 @@ require 'webpay/version'
 
 module WebPay
   autoload(:Client, 'webpay/client')
+  autoload(:WebPayError, 'webpay/errors/webpay_error')
 
   @api_base = 'https://api.webpay.jp'
   @api_version = '/v1'

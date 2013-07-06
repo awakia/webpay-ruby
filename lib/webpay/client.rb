@@ -1,4 +1,5 @@
 require 'faraday'
+require 'json'
 
 module WebPay
   class Client
@@ -22,6 +23,20 @@ module WebPay
         builder.adapter Faraday.default_adapter
       end
       @api_version = api_version
+    end
+
+    # Convert faraday response to domain object
+    #
+    # @param response [Faraday::Response]
+    # @return [Hash] Raw hash object
+    # @raise [WebPay::WebPayError] For invalid requests (4xx) or internal server error (5xx)
+    def handle_response(response)
+      case response.status
+      when 200..299
+        JSON.parse(response.body)
+      else
+        raise WebPay::WebPayError.from_response(response.status, response.body)
+      end
     end
 
     Faraday::Connection::METHODS.each do |method|
