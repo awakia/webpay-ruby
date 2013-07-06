@@ -6,6 +6,9 @@ module WebPay
   autoload(:Entity, 'webpay/entity')
   autoload(:Card, 'webpay/card')
   autoload(:Charge, 'webpay/charge')
+  autoload(:Customer, 'webpay/customer')
+  autoload(:Event, 'webpay/event')
+  autoload(:Token, 'webpay/token')
   autoload(:ResponseConverter, 'webpay/response_converter')
 
   @api_base = 'https://api.webpay.jp'

@@ -1,15 +1,31 @@
 module WebPay
   class ResponseConverter
-    def convert(hash)
-      attributes = hash.dup
-      case hash['object']
-      when 'charge'
-        if hash['card']
-          attributes['card'] = convert(hash['card'])
-        end
-        Charge.new(attributes)
+    def convert(attributes)
+      case attributes['object']
       when 'card'
         Card.new(attributes)
+      when 'charge'
+        if attributes['card']
+          attributes['card'] = convert(attributes['card'])
+        end
+        Charge.new(attributes)
+      when 'customer'
+        if attributes['active_card']
+          attributes['active_card'] = convert(attributes['active_card'])
+        end
+        Customer.new(attributes)
+      when 'token'
+        if attributes['card']
+          attributes['card'] = convert(attributes['card'])
+        end
+        Token.new(attributes)
+      when 'event'
+        if attributes['data']
+          attributes['data']['object'] = convert(attributes['data']['object'])
+        end
+        Event.new(attributes)
+      when 'account'
+        Account.new(attributes)
       end
     end
   end
