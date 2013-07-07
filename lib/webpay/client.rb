@@ -33,7 +33,11 @@ module WebPay
     def handle_response(response)
       case response.status
       when 200..299
-        JSON.parse(response.body)
+        begin
+          JSON.parse(response.body)
+        rescue JSON::ParserError => e
+          raise WebPay::APIConnectionError.new("Response JSON is broken. #{e.message}: #{response.body}", e)
+        end
       else
         raise WebPay::WebPayError.from_response(response.status, response.body)
       end
@@ -41,7 +45,11 @@ module WebPay
 
     Faraday::Connection::METHODS.each do |method|
       define_method(method) do |url, *args|
-        response = @conn.__send__(method, @api_version + url, *args)
+        begin
+          response = @conn.__send__(method, @api_version + url, *args)
+        rescue Faraday::Error::ClientError => e
+          raise WebPay::APIConnectionError.faraday_error(e)
+        end
         handle_response(response)
       end
     end

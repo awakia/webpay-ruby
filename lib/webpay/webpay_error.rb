@@ -26,7 +26,15 @@ module WebPay
   end
 
   class APIConnectionError < WebPayError
-    def initialize(message)
+    # @note internal
+    def self.faraday_error(e)
+      new("Connection with WebPay API server failed. #{e.message}", e)
+    end
+
+    attr_reader :original_error
+
+    def initialize(message, original_error)
+      @original_error = original_error
       super(message)
     end
   end
