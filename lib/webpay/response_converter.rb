@@ -26,6 +26,11 @@ module WebPay
         Event.new(attributes)
       when 'account'
         Account.new(attributes)
+
+      when 'list'
+        attributes['data'] ||= []
+        attributes['data'].map! { |line| convert(line) }
+        EntityList.new(attributes)
       end
     end
   end

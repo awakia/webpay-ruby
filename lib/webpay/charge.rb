@@ -7,6 +7,9 @@ module WebPay
       def retrieve(id)
         convert(WebPay.client.get("/charges/#{id}"))
       end
+      def all(params = {})
+        convert(WebPay.client.get("/charges", params))
+      end
     end
 
     def refund(params = {})
