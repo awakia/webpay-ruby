@@ -1,6 +1,8 @@
 module WebPay
   class Entity
     class << self
+      include Operations
+
       def convert(hash)
         converter = ResponseConverter.new
         converter.convert(hash)

@@ -58,5 +58,12 @@ module WebPay
       @param = error_response['param']
       super(error_response['message'], status, error_response)
     end
+
+    def self.invalid_id(id)
+      InvalidRequestError.new(nil, {
+          'type' => 'invalid_request_error',
+          'message' => "ID must not be empty",
+          'param' => 'id' })
+    end
   end
 end

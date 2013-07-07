@@ -2,6 +2,7 @@ require 'webpay/version'
 
 module WebPay
   autoload(:Client, 'webpay/client')
+  autoload(:Operations, 'webpay/operations')
   autoload(:WebPayError, 'webpay/webpay_error')
   autoload(:APIConnectionError, 'webpay/webpay_error')
   autoload(:APIError, 'webpay/webpay_error')

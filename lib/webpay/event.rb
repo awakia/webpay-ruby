@@ -1,15 +1,9 @@
 module WebPay
   class Event < Entity
-    class << self
-      def retrieve(id)
-        convert(WebPay.client.get([path, id].join('/')))
-      end
-      def all(params = {})
-        convert(WebPay.client.get(path, params))
-      end
-      def path
-        '/events'
-      end
+    install_class_operations :retrieve, :all
+
+    def self.path
+      '/events'
     end
 
     class Data < Entity
