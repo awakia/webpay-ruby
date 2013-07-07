@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = WebPay::VERSION
   spec.authors       = ["tomykaira"]
   spec.email         = ["tomykaira@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
+  spec.description   = %q{Ruby binding of WebPay API}
+  spec.summary       = %q{Ruby binding of WebPay API}
+  spec.homepage      = "https://webpay.jp"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
