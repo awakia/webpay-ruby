@@ -29,5 +29,12 @@ module WebPay
     def respond_to_missing?(method_name, include_private = false)
       @attributes.has_key?(method_name.to_s) || super
     end
+
+    private
+    def update_attributes(attributes)
+      raise "unexpected object" if attributes['object'] != @attributes['object']
+      new_object = ResponseConverter.new.convert(attributes)
+      @attributes = new_object.attributes
+    end
   end
 end

@@ -35,12 +35,5 @@ module WebPay
       response = WebPay.client.delete("/customers/#{id}")
       response['deleted']
     end
-
-    def update_attributes(attributes)
-      p attributes
-      new_object = ResponseConverter.new.convert(attributes)
-      raise "unexpected object" unless new_object.is_a?(Customer)
-      @attributes = new_object.attributes
-    end
   end
 end

@@ -15,11 +15,5 @@ module WebPay
     def refund(params = {})
       update_attributes(WebPay.client.post("/charges/#{id}/refund", params))
     end
-
-    def update_attributes(attributes)
-      new_object = ResponseConverter.new.convert(attributes)
-      raise "unexpected object" unless new_object.is_a?(Charge)
-      @attributes = new_object.attributes
-    end
   end
 end
