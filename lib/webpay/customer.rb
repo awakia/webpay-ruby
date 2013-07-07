@@ -2,13 +2,16 @@ module WebPay
   class Customer < Entity
     class << self
       def create(params = {})
-        convert(WebPay.client.post('/customers', params))
+        convert(WebPay.client.post(path, params))
       end
       def retrieve(id)
-        convert(WebPay.client.get("/customers/#{id}"))
+        convert(WebPay.client.get([path, id].join('/')))
       end
       def all(params = {})
-        convert(WebPay.client.get("/customers", params))
+        convert(WebPay.client.get(path, params))
+      end
+      def path
+        '/customers'
       end
     end
 
@@ -26,14 +29,18 @@ module WebPay
     end
 
     def save
-      update_attributes(WebPay.client.post("/customers/#{id}", @updated_attributes))
+      update_attributes(WebPay.client.post(path, @updated_attributes))
       @updated_attributes = {}
       self
     end
 
     def delete
-      response = WebPay.client.delete("/customers/#{id}")
+      response = WebPay.client.delete(path)
       response['deleted']
+    end
+
+    def path
+      "/customers/#{id}"
     end
   end
 end
