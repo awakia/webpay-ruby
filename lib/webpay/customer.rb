@@ -23,10 +23,10 @@ module WebPay
 
     [:description, :card, :email].each do |attr|
       define_method("#{attr}=") do |value|
-        @updated_attributes[attr] = value
+        @updated_attributes[attr.to_s] = value
       end
       define_method("#{attr}") do
-        @updated_attributes[attr] || @attributes[attr]
+        @updated_attributes[attr.to_s] || @attributes[attr.to_s]
       end
     end
 
