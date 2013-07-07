@@ -47,7 +47,7 @@ module WebPay
     end
 
     def api_key
-      @api_base
+      @api_key
     end
   end
 end
