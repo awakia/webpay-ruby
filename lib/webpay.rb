@@ -2,7 +2,12 @@ require 'webpay/version'
 
 module WebPay
   autoload(:Client, 'webpay/client')
-  autoload(:WebPayError, 'webpay/errors/webpay_error')
+  autoload(:WebPayError, 'webpay/webpay_error')
+  autoload(:APIConnectionError, 'webpay/webpay_error')
+  autoload(:APIError, 'webpay/webpay_error')
+  autoload(:AuthenticationError, 'webpay/webpay_error')
+  autoload(:CardError, 'webpay/webpay_error')
+  autoload(:InvalidRequestError, 'webpay/webpay_error')
   autoload(:Entity, 'webpay/entity')
   autoload(:EntityList, 'webpay/entity_list')
   autoload(:Account, 'webpay/account')
