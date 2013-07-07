@@ -13,6 +13,14 @@ module WebPay
       super(attributes)
     end
 
+    def []=(key, value)
+      send("#{key}=", value)
+    end
+
+    def [](key)
+      send(key)
+    end
+
     [:description, :card, :email].each do |attr|
       define_method("#{attr}=") do |value|
         @updated_attributes[attr] = value

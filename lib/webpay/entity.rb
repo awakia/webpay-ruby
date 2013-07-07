@@ -19,6 +19,10 @@ module WebPay
       other.equal?(self) || (other.instance_of?(self.class) && other.id == self.id)
     end
 
+    def [](key)
+      send(key)
+    end
+
     def method_missing(method_name, *args, &block)
       key = method_name.to_s
       if @attributes.has_key?(key)
