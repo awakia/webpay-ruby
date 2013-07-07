@@ -5,6 +5,7 @@ module WebPay
   autoload(:WebPayError, 'webpay/errors/webpay_error')
   autoload(:Entity, 'webpay/entity')
   autoload(:EntityList, 'webpay/entity_list')
+  autoload(:Account, 'webpay/account')
   autoload(:Card, 'webpay/card')
   autoload(:Charge, 'webpay/charge')
   autoload(:Customer, 'webpay/customer')
