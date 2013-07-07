@@ -26,6 +26,9 @@ module WebPay
       define_method("#{attr}=") do |value|
         @updated_attributes[attr] = value
       end
+      define_method("#{attr}") do |value|
+        @updated_attributes[attr] || @attributes[attr]
+      end
     end
 
     def save
