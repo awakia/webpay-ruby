@@ -22,6 +22,7 @@ module WebPay
       when 'event'
         if attributes['data']
           attributes['data']['object'] = convert(attributes['data']['object'])
+          attributes['data'] = Event::Data.new(attributes['data'])
         end
         Event.new(attributes)
       when 'account'
