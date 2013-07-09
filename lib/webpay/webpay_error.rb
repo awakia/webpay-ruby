@@ -10,15 +10,16 @@ module WebPay
       unless hash['error']
         return APIConnectionError.new("Invalid response #{body}")
       end
+      error_hash = hash['error']
       case status
       when 400, 404
-        InvalidRequestError.new(status, hash)
+        InvalidRequestError.new(status, error_hash)
       when 401
-        AuthenticationError.new(status, hash)
+        AuthenticationError.new(status, error_hash)
       when 402
-        CardError.new(status, hash)
+        CardError.new(status, error_hash)
       else
-        APIError.new(status, hash)
+        APIError.new(status, error_hash)
       end
     end
 
