@@ -41,6 +41,7 @@ module WebPay
       raise "unexpected object" if attributes['object'] != @attributes['object']
       new_object = ResponseConverter.new.convert(attributes)
       @attributes = new_object.attributes
+      self
     end
   end
 end
