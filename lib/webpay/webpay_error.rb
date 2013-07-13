@@ -4,7 +4,8 @@ module WebPay
   # All WebPay error classes inherit this.
   # This error itself is not raised.
   class WebPayError < StandardError
-    # Internal
+    # @api private
+    # @return [WebPayError]
     def self.from_response(status, body)
       hash = JSON.load(body)
       unless hash['error']
@@ -37,7 +38,8 @@ module WebPay
 
   # This error is raised when API request fails.
   class APIConnectionError < WebPayError
-    # Internal
+    # @api private
+    # @return [APIConnectionError]
     def self.faraday_error(e)
       new("Connection with WebPay API server failed. #{e.message}", e)
     end
