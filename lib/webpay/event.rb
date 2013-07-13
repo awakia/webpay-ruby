@@ -4,6 +4,7 @@ module WebPay
   class Event < Entity
     install_class_operations :retrieve, :all
 
+    # @return [String] Relative path to API root
     # @api private
     def self.path
       '/events'

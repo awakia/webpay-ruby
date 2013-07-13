@@ -9,6 +9,7 @@ module WebPay
     # Only description, card, and email are effective.
     attr_accessor :updated_attributes
 
+    # @return [String] Relative path to API root
     # @api private
     def self.path
       '/customers'
@@ -60,6 +61,7 @@ module WebPay
       response['deleted']
     end
 
+    # @return [String] Relative path of instance to API root
     # @api private
     def path
       "/customers/#{id}"

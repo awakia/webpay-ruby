@@ -4,6 +4,7 @@ module WebPay
   class Token < Entity
     install_class_operations :create, :retrieve
 
+    # @return [String] Relative path to API root
     # @api private
     def self.path
       '/tokens'

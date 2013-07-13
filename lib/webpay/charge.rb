@@ -4,6 +4,7 @@ module WebPay
   class Charge < Entity
     install_class_operations :create, :retrieve, :all
 
+    # @return [String] Relative path to API root
     # @api private
     def self.path
       '/charges'
@@ -16,6 +17,7 @@ module WebPay
       update_attributes(WebPay.client.post([path, 'refund'].join('/'), params))
     end
 
+    # @return [String] Relative path of instance to API root
     # @api private
     def path
       "/charges/#{id}"
