@@ -1,5 +1,12 @@
 module WebPay
+
+  # Converts raw Hash response to an entity
   class ResponseConverter
+
+    # Converts raw Hash response to an entity.
+    # This recursively changes internal objects.
+    # @param [Hash] attributes Raw API response
+    # @return [Entity] Corresponding entity
     def convert(attributes)
       case attributes['object']
       when 'card'
