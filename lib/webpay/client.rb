@@ -2,16 +2,19 @@ require 'faraday'
 require 'json'
 
 module WebPay
+
+  # API client wrapping of Faraday.
+  # Not intended to use directly.
   class Client
 
     # Initialize client
     #
     # @param api_key [String] User's secret API key
     # @param api_base [String] the URL without trailing '/'.
-    # @param api_version [String] the path indicating API version`/v1`
+    # @param api_version [String] the path indicating API version. `/v1`.
     #
     # @example Client for the default endpoint
-    # Client.new('test_secret_XXXX', 'https://api.webpay.jp', '/v1')
+    #     Client.new('test_secret_XXXX', 'https://api.webpay.jp', '/v1')
     def initialize(api_key, api_base, api_version)
       ssl_options = {ca_file: WebPay.ssl_ca_file}
       default_headers = {
@@ -25,10 +28,12 @@ module WebPay
       @api_version = api_version
     end
 
-    # Convert faraday response to domain object
+    # Convert faraday response to a hash by decoding JSON.
+    # This raises error if the response indicates error status.
     #
+    # @api private
     # @param response [Faraday::Response]
-    # @return [Hash] Raw hash object
+    # @return [Hash] Raw object
     # @raise [WebPay::WebPayError] For invalid requests (4xx) or internal server error (5xx)
     def handle_response(response)
       case response.status
