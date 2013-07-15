@@ -17,6 +17,13 @@ module WebPay
       update_attributes(WebPay.client.post([path, 'refund'].join('/'), params))
     end
 
+    # Capture a not captured charge
+    # @param [Hash] params request parameters
+    # @option params [Integer] :amount The amount to capture. Default is all amount.
+    def capture(params = {})
+      update_attributes(WebPay.client.post([path, 'capture'].join('/'), params))
+    end
+
     # @return [String] Relative path of instance to API root
     # @api private
     def path
