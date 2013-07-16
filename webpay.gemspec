@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = WebPay::VERSION
   spec.authors       = ["webpay", "tomykaira"]
   spec.email         = ["administrators@webpay.jp", "tomykaira@gmail.com"]
-  spec.description   = %q{Ruby binding of WebPay API}
+  spec.description   = 'WebPay is payment gateway service in Japan. see also https://webpay.jp/'
   spec.summary       = %q{Ruby binding of WebPay API}
   spec.homepage      = "https://webpay.jp"
   spec.license       = "MIT"
