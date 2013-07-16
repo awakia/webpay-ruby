@@ -6,8 +6,8 @@ require 'webpay/version'
 Gem::Specification.new do |spec|
   spec.name          = "webpay"
   spec.version       = WebPay::VERSION
-  spec.authors       = ["tomykaira"]
-  spec.email         = ["tomykaira@gmail.com"]
+  spec.authors       = ["webpay", "tomykaira"]
+  spec.email         = ["administrators@webpay.jp", "tomykaira@gmail.com"]
   spec.description   = %q{Ruby binding of WebPay API}
   spec.summary       = %q{Ruby binding of WebPay API}
   spec.homepage      = "https://webpay.jp"
