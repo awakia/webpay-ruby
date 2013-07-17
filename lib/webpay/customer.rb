@@ -44,6 +44,15 @@ module WebPay
       end
     end
 
+    # Return a hash similar to the response from API.
+    # If an attribute's value is updated, the updated value is used.
+    # @return [Hash] a hash similar to the response from API
+    def to_hash
+      Hash[@attributes.merge(@updated_attributes).map { |k, v| [k, v.is_a?(Entity) ? v.to_hash : v] }]
+    end
+
+    alias_method :to_h, :to_hash
+
     # Send update request of modified attributes.
     # description, card, and email are modifiable.
     # @return [Customer] this object with attributes updated

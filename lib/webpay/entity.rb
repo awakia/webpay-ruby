@@ -37,6 +37,14 @@ module WebPay
       send(key)
     end
 
+    # Return a hash similar to the response from API.
+    # @return [Hash] a hash similar to the response from API
+    def to_hash
+      Hash[@attributes.map { |k, v| [k, v.is_a?(Entity) ? v.to_hash : v] }]
+    end
+
+    alias_method :to_h, :to_hash
+
     # Provide access to attributes
     # @return [Object] The attribute's value
     def method_missing(method_name, *args, &block)
