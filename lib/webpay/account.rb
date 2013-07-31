@@ -10,6 +10,13 @@ module WebPay
         convert(WebPay.client.get(path))
       end
 
+      # Clear all test data of api_key's owner
+      # @return [Boolean] true if the request succeeded
+      def delete_data
+        response = WebPay.client.delete([path, 'data'].join('/'))
+        response['deleted']
+      end
+
       # @api private
       # @return [String] Relative path to API root: <code>'/account'</code>
       def path
