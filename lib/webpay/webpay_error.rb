@@ -1,3 +1,4 @@
+require 'json'
 module WebPay
 
   # Abstract error class for WebPay errors.
