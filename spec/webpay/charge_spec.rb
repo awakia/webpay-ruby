@@ -60,10 +60,10 @@ describe WebPay::Charge do
   describe '.all' do
     context 'with craeted[gt]' do
       before do
-        stub_get_request("/charges?limit=3&offset=0&created[gt]=1378000000", 'charges/all')
+        stub_get_request("/charges?count=3&offset=0&created[gt]=1378000000", 'charges/all')
       end
 
-      subject(:list) { described_class.all(limit: 3, offset: 0, created: { gt: 1378000000 }) }
+      subject(:list) { described_class.all(count: 3, offset: 0, created: { gt: 1378000000 }) }
       its(:url) { should eq '/v1/charges' }
       its(:count) { should eq 11 }
       it 'data.first.description' do

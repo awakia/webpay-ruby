@@ -38,10 +38,10 @@ describe WebPay::Customer do
 
   describe '.all' do
     before do
-      stub_get_request("/customers?limit=3&offset=0&created[gt]=1378000000", 'customers/all')
+      stub_get_request("/customers?count=3&offset=0&created[gt]=1378000000", 'customers/all')
     end
 
-    subject(:list) { described_class.all(limit: 3, offset: 0, created: { gt: 1378000000 }) }
+    subject(:list) { described_class.all(count: 3, offset: 0, created: { gt: 1378000000 }) }
     its(:url) { should eq '/v1/customers' }
     its(:count) { should eq 4 }
     it 'data.first.description' do
