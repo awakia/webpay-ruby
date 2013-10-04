@@ -1,3 +1,4 @@
+require 'json'
 module WebPay
 
   # Abstract error class for WebPay errors.
@@ -7,7 +8,12 @@ module WebPay
     # @api private
     # @return [WebPayError]
     def self.from_response(status, body)
-      hash = JSON.load(body)
+      hash =
+        begin
+          JSON.load(body)
+        rescue JSON::ParserError => e
+          return WebPay::APIConnectionError.new("Response JSON is broken. #{e.message}: #{body}", e)
+        end
       unless hash['error']
         return APIConnectionError.new("Invalid response #{body}")
       end
