@@ -3,6 +3,7 @@
 .bundle
 .config
 Gemfile.lock
+gemfiles/*.lock
 lib/bundler/man
 pkg
 rdoc
