@@ -39,7 +39,7 @@ module WebPay
       case response.status
       when 200..299
         begin
-          JSON.parse(response.body)
+          JSON.parse(response.body.force_encoding(infer_encoding(response)))
         rescue JSON::ParserError => e
           raise WebPay::APIConnectionError.new("Response JSON is broken. #{e.message}: #{response.body}", e)
         end
@@ -57,6 +57,24 @@ module WebPay
         end
         handle_response(response)
       end
+    end
+
+    private
+
+    # Infer encoding from response
+    #
+    # @param response [Faraday::Response]
+    # @return [Encoding]
+    def infer_encoding(response)
+      unless (type = response.headers['content-type']) &&
+          (charset = type.split(';').find { |field| field.include?('charset=') })
+        return Encoding.default_external
+      end
+
+      encoding_string = charset.split('=', 2).last.strip
+      Encoding.find(encoding_string)
+    rescue
+      Encoding.default_external
     end
   end
 end
