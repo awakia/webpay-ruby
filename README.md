@@ -1,4 +1,4 @@
-# webpay-ruby
+# webpay-ruby [![Build Status](https://travis-ci.org/webpay/webpay-ruby.png)](https://travis-ci.org/webpay/webpay-ruby)
 
 WebPay Ruby bindings  https://webpay.jp
 
