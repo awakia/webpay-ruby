@@ -36,6 +36,18 @@ describe WebPay::Customer do
     end
   end
 
+  describe '.retrieve deleted instance' do
+    let(:id) { 'cus_7GafGMbML8R28Io' }
+    before do
+      stub_get_request("/customers/#{id}", 'customers/retrieve_deleted')
+    end
+
+    subject(:customer) { described_class.retrieve(id) }
+    its(:id) { should eq id }
+    its(:deleted) { should eq true }
+    it { should be_deleted }
+  end
+
   describe '.all' do
     before do
       stub_get_request("/customers?count=3&offset=0&created[gt]=1378000000", 'customers/all')
