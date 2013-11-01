@@ -13,6 +13,7 @@ module WebPay
   autoload(:InvalidRequestError, 'webpay/webpay_error')
   autoload(:Entity, 'webpay/entity')
   autoload(:EntityList, 'webpay/entity_list')
+  autoload(:DeletedEntity, 'webpay/deleted_entity')
   autoload(:Account, 'webpay/account')
   autoload(:Card, 'webpay/card')
   autoload(:Charge, 'webpay/charge')

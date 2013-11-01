@@ -2,7 +2,7 @@ module WebPay
 
   # Object for API response hash object with <code>hash['object'] = customer</code>
   class Customer < Entity
-    install_class_operations :create, :retrieve, :all
+    install_class_operations :create, :all
 
     # Attributes updated by assignment.
     # These attributes are sent on save.
@@ -15,10 +15,29 @@ module WebPay
       '/customers'
     end
 
+    # @return [Entity] WebPay::Customer or WebPay::DeletedEntity. <code>deleted?</code> is to classify.
+    def self.retrieve(id)
+      id = id.to_s
+      if id.strip == ''
+        raise InvalidRequestError.invalid_id(id)
+      end
+      response = WebPay.client.get([path, id].join('/'))
+      if response['deleted']
+        DeletedEntity.new(response)
+      else
+        convert(response)
+      end
+    end
+
     # @api private
     def initialize(attributes)
       @updated_attributes = {}
       super(attributes)
+    end
+
+    # @return [Boolean] false
+    def deleted?
+      false
     end
 
     # <code>object['key']=</code> is wrapper for <code>object.key =</code>.
