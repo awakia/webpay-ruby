@@ -32,6 +32,8 @@ module WebPay
           attributes['data'] = Event::Data.new(attributes['data'])
         end
         Event.new(attributes)
+      when 'shop'
+        Shop.new(attributes)
       when 'account'
         Account.new(attributes)
 

@@ -20,6 +20,7 @@ module WebPay
   autoload(:Customer, 'webpay/customer')
   autoload(:Event, 'webpay/event')
   autoload(:Token, 'webpay/token')
+  autoload(:Shop, 'webpay/shop')
   autoload(:ResponseConverter, 'webpay/response_converter')
 
   @api_base = 'https://api.webpay.jp'

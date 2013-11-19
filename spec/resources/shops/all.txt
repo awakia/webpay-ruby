@@ -1,0 +1,52 @@
+HTTP/1.1 200 OK 
+Content-Type: application/json; charset=utf-8
+X-Ua-Compatible: IE=Edge
+Etag: "004a2dd300d552b0ca173e9f100901c7"
+Cache-Control: max-age=0, private, must-revalidate
+X-Request-Id: 03f8eeb4dc0aa2a93156d61436925580
+X-Runtime: 0.011624
+Server: WEBrick/1.3.1 (Ruby/1.9.3/2013-02-22)
+Date: Tue, 19 Nov 2013 23:19:00 GMT
+Content-Length: 970
+Connection: Keep-Alive
+
+{
+  "object": "list",
+  "url": "/v1/shops",
+  "count": 3,
+  "data": [
+    {
+      "id": "sh_9hg6Awd357ywfBk",
+      "object": "shop",
+      "livemode": false,
+      "status": "created",
+      "description": "Sample Shop",
+      "access_key": "shop_71Lb8h6Mp6Pqgza6kW4LY6lA",
+      "created": 1384902754,
+      "offer": null,
+      "statement_descriptor": null
+    },
+    {
+      "id": "sh_9hg7bE7Bma6o024",
+      "object": "shop",
+      "livemode": false,
+      "status": "created",
+      "description": "最新の店子",
+      "access_key": "shop_4Rb0Ro4iJ1RVfQ77OWd8C6Ou",
+      "created": 1384902251,
+      "offer": null,
+      "statement_descriptor": null
+    },
+    {
+      "id": "sh_9hg8IC3Go7or2e3",
+      "object": "shop",
+      "livemode": false,
+      "status": "created",
+      "description": "Sample Shop",
+      "access_key": "shop_15u9XQ2OT16Vgnt5aeagr9Tk",
+      "created": 1384902274,
+      "offer": null,
+      "statement_descriptor": null
+    }
+  ]
+}

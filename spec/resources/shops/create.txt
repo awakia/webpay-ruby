@@ -1,0 +1,23 @@
+HTTP/1.1 200 OK 
+Content-Type: application/json; charset=utf-8
+X-Ua-Compatible: IE=Edge
+Etag: "ce905858eaf75c4bb48086fa37fb0d26"
+Cache-Control: max-age=0, private, must-revalidate
+X-Request-Id: 3f7b9ed36baeb2fb6fb340e6a3633c54
+X-Runtime: 0.079041
+Server: WEBrick/1.3.1 (Ruby/1.9.3/2013-02-22)
+Date: Tue, 19 Nov 2013 23:12:34 GMT
+Content-Length: 252
+Connection: Keep-Alive
+
+{
+  "id": "sh_9hg6Awd357ywfBk",
+  "object": "shop",
+  "livemode": false,
+  "status": "created",
+  "description": "Sample Shop",
+  "access_key": "shop_71Lb8h6Mp6Pqgza6kW4LY6lA",
+  "created": 1384902754,
+  "offer": null,
+  "statement_descriptor": null
+}
