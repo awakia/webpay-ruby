@@ -7,3 +7,8 @@ group :test do
   gem 'rspec', '~> 2.14.0'
   gem 'webmock', '~> 1.13.0'
 end
+
+platforms :rbx do
+  gem 'rubysl'
+  gem 'json'
+end

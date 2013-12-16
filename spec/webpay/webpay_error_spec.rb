@@ -55,4 +55,10 @@ describe WebPay::WebPayError do
     it { should be_instance_of WebPay::APIConnectionError }
     its(:message) { should include 'Response JSON is broken' }
   end
+
+  describe 'The response JSON has no "error" field' do
+    subject(:error) { described_class.from_response(404, '{}') }
+    it { should be_instance_of WebPay::APIConnectionError }
+    its(:message) { should include 'Invalid response {}' }
+  end
 end
