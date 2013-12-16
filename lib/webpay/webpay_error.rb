@@ -53,7 +53,7 @@ module WebPay
     # @return [Error] The original error raised in request
     attr_reader :original_error
 
-    def initialize(message, original_error)
+    def initialize(message, original_error = nil)
       @original_error = original_error
       super(message)
     end
