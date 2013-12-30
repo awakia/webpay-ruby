@@ -25,6 +25,7 @@ module WebPay
   @api_base = 'https://api.webpay.jp'
   @api_version = '/v1'
   @api_key = nil
+  @api_proxy = nil
 
   class << self
     # Absolute path to SSL CA file.
@@ -36,7 +37,7 @@ module WebPay
     # Current client object.
     # client is memoized, and nullified when @api_base or @api_key is modified.
     def client
-      @client ||= Client.new(@api_key, @api_base, @api_version)
+      @client ||= Client.new(@api_key, @api_base, @api_version, @api_proxy)
     end
 
     # Set api_base, the base URL of API.
@@ -54,6 +55,12 @@ module WebPay
       @client = nil
     end
 
+    # Set proxy for connecting to @api_base
+    def api_proxy=(new_value)
+      @api_proxy = new_value
+      @client = nil
+    end
+
     # Get current api_base
     def api_base
       @api_base
@@ -62,6 +69,11 @@ module WebPay
     # Get current api_key
     def api_key
       @api_key
+    end
+
+    # Get current api_proxy
+    def api_proxy
+      @api_proxy
     end
   end
 end
