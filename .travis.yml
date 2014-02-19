@@ -9,4 +9,4 @@ gemfile:
 script: "bundle exec rake"
 notifications:
   webhooks:
-    - https://webpay.slack.com/services/hooks/travis?token=wgtkamK7yIJstQYiotY6Xb6W
+    secure: Pbqm39Q5UmaN76lEv5xqgrLHgApc+OWsQTFgOAsweBXuIW1fPsoMRq8CwnrZ9Y23XdE1OmK2mi0Y3ncONgptp4yXi+kfaSmMT8LUwJ+Jkk1NWB2teoCYYaRt+da70bjClhSfBdb2+1S300o5NnhdyCdtC1EKP6syakBxgzJkOP0=
