@@ -26,6 +26,7 @@ module WebPay
   @api_version = '/v1'
   @api_key = nil
   @api_proxy = nil
+  @language = :en
 
   class << self
     # Absolute path to SSL CA file.
@@ -37,7 +38,7 @@ module WebPay
     # Current client object.
     # client is memoized, and nullified when @api_base or @api_key is modified.
     def client
-      @client ||= Client.new(@api_key, @api_base, @api_version, @api_proxy)
+      @client ||= Client.new(@api_key, @api_base, @api_version, @api_proxy, @language)
     end
 
     # Set api_base, the base URL of API.
@@ -61,6 +62,13 @@ module WebPay
       @client = nil
     end
 
+    # Set value of accept-language request header
+    # Currently WebPay API handles :en and :ja
+    def language=(new_value)
+      @language = new_value
+      @client = nil
+    end
+
     # Get current api_base
     def api_base
       @api_base
@@ -74,6 +82,11 @@ module WebPay
     # Get current api_proxy
     def api_proxy
       @api_proxy
+    end
+
+    # Get current language
+    def language
+      @language
     end
   end
 end

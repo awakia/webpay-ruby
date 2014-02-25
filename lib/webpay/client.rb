@@ -15,11 +15,12 @@ module WebPay
     #
     # @example Client for the default endpoint
     #     Client.new('test_secret_XXXX', 'https://api.webpay.jp', '/v1')
-    def initialize(api_key, api_base, api_version, api_proxy = nil)
+    def initialize(api_key, api_base, api_version, api_proxy = nil, lang = :en)
       ssl_options = {ca_file: WebPay.ssl_ca_file}
       default_headers = {
         'Authorization' => "Bearer #{api_key}",
-        'User-Agent' => "WebPay#{api_version} RubyBinding/#{WebPay::VERSION}"
+        'User-Agent' => "WebPay#{api_version} RubyBinding/#{WebPay::VERSION}",
+        'Accept-Language' => lang.to_s
       }
       @conn = Faraday.new(api_base, ssl: ssl_options, headers: default_headers, proxy: api_proxy) do |builder|
         builder.request :url_encoded
